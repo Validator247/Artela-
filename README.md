@@ -99,4 +99,28 @@ Check Syn
 
         artelad status 2>&1 | jq .SyncInfo.catching_up
 
-            
+Add new key
+
+        artelad keys add wallet
+
+Create a validator
+
+        artelad tx staking create-validator 
+        --amount 900000000000000000uart \
+        --pubkey $(artelad tendermint show-validator) \
+        --moniker "Moniker_name" \
+        --chain-id artela_11822-1 \
+        --commission-rate 0.1 \
+        --commission-max-rate 0.20 \
+        --commission-max-change-rate 0.05 \
+        --min-self-delegation 1 \
+        --from wallet \
+        --gas-adjustment 1.4 \
+        --gas auto \
+        --gas-prices 200000uart \
+        -y
+
+Delegate
+
+        artelad tx staking delegate <Operator_Address> amout_art --chain-id artela_11822-1 --from=wallet -y
+
