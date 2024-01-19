@@ -124,3 +124,25 @@ Delegate
 
         artelad tx staking delegate <Operator_Address> amout_art --chain-id artela_11822-1 --from=wallet -y
 
+UPDATE: Update node v0.4.7-rc6
+
+        sudo systemctl stop artelad
+
+next
+
+        cd $HOME
+        cd artela
+        git fetch --all
+        git checkout v0.4.7-rc6
+        make install
+
+next
+
+        sed -E 's/^pool-size[[:space:]]*=[[:space:]]*[0-9]+$/apply-pool-size = 10\nquery-pool-size = 30/' ~/.artelad/config/app.toml > ~/.artelad/config/temp.app.toml && mv ~/.artelad/config/temp.app.toml ~/.artelad/config/app.toml
+
+next
+
+        sudo systemctl start artelad
+
+        
+
